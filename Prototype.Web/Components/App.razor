@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <base href="/"/>
+        
+        @* ReSharper disable Html.PathError *@
+        <link rel="stylesheet" href="Prototype.Web.styles.css"/>
+        @* ReSharper restore Html.PathError *@
+        
+        <HeadOutlet />
+    </head>
+    <body>
+        <Routes @rendermode="InteractiveServer" />
+
+        @* ReSharper disable Html.PathError *@
+        <script src="_framework/blazor.web.js"></script>
+        @* ReSharper restore Html.PathError *@
+    </body>
+</html>
