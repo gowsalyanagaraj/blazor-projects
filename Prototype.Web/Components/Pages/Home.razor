@@ -1,3 +1,42 @@
 ﻿@page "/"
+@using Prototype.Web.Enums
 
-<h1>Pikachu!</h1>
+<header>
+    <h1>Employee Management System</h1>
+</header>
+
+<main>
+    <div class="main-content">
+        <h2>Employee Details</h2>
+            <table>
+                <tr>
+                    <td class="table-head">First Name</td>
+                    <td class="table-head">Full Name</td>
+                    <td class="table-head">Age</td>
+                    <td class="table-head">Type</td>
+                </tr>
+                @foreach (var employee in employees)
+                {
+                    string fullName = employee.FirstName + " " + employee.LastName;
+                    <tr>
+                        <td class="table-data">@employee.FirstName</td>
+                        <td class="table-data">@fullName</td>
+                        <td class="table-data">@employee.Age</td>
+                        @if (employee.Type == EmployeeType.Manager)
+                        {
+                            <td class="table-data" style="color:red;">@employee.Type</td>
+                        }
+                        else if (employee.Type == EmployeeType.Employee)
+                        {
+                            <td class="table-data" style="color:green">@employee.Type</td>
+                        }
+
+                    </tr>
+                }
+            </table>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; User Profile Page</p>
+</footer>
