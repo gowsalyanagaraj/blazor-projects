@@ -1,0 +1,108 @@
+﻿* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	--fg: forestgreen;
+	--bg-white: #f0f0f0;
+	--white: white;
+}
+body {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background-color: var(--bg-white);
+	
+}
+.header {
+	grid-area: header;
+	background-color: var(--fg);
+	color: white;
+	padding: 20px;
+	text-align: center;
+	margin-bottom: 40px;
+}
+#addbutton {
+	grid-area: addbutton;
+	float: right;
+
+}
+.button {
+	background-color: var(--fg);
+	border: none;
+	border-radius: 4px;
+	color: white;
+	padding: 10px;
+	text-align: center;
+	font-size: 16px;
+	cursor: pointer; 
+}
+.button.add {
+	right: 100px;
+	position:absolute;
+}
+.add-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.flex-card {
+	justify-items: center;
+	flex-wrap:wrap;
+	width: 350px;
+	height: 200px;
+	background-color: var(--white);
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	padding: 30px;
+}
+.flex-card h3 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+.textbox {
+	height: 37px;
+}
+
+.items-card {
+	grid-area: items;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	flex-wrap: wrap;
+}
+.items {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	gap: 1rem;
+	margin: 20px;
+	padding: 50px;
+	width: 50rem;
+	height: max-content;
+	background-color: var(--white);
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+img {
+	height: 2rem;
+	width: 2rem;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+
+@media screen and (max-width: 768px) {
+	.items {
+		flex-direction: column;
+	}
+
+	.items-card {
+		flex-direction: row;
+		width: 100%;
+	}
+
+	.add-card {
+		width: 100%;
+	}
+
+}
+

@@ -1,0 +1,11 @@
+﻿@page "/edittodo"
+@inject NavigationManager NavigationManager
+
+<NavBar />
+<main class="add-card">
+    <div class="flex-card">
+        <h3>Edit Task</h3>
+        <input type="text" class="textbox" name="taskinput" @bind="input"/>
+        <button class="button" @onclick="Submit">Submit</button>
+    </div>
+</main>

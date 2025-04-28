@@ -1,0 +1,11 @@
+﻿@page "/addtodo"
+@inject NavigationManager NavigationManager
+
+<NavBar />
+<main class="add-card">
+    <div class="flex-card">
+        <h3>Task Name</h3>
+        <input type="text" class="textbox" name="tastinput" placeholder="Enter the task here" @bind="input" />
+        <button class="button" @onclick="Submit">Submit</button>
+    </div>
+</main>
