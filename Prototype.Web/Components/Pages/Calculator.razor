@@ -1,0 +1,36 @@
+﻿@page "/calculator"
+
+<main class="main">
+    <div class="main-container">
+        <div class="main-sub-container">
+            <h3 class="label">First Number</h3>
+            <input class="input-box" type="text" @bind="FirstNumber" placeholder=" Enter a valid number" />
+        </div>
+        <div class="main-sub-container">
+            <h3 class="label">Second Number</h3>
+            <input class="input-box" type="text" @bind="SecondNumber" placeholder=" Enter a valid number" />
+        </div>
+        <div class="main-sub-container">
+            <h3 class="label">Operation</h3>
+            <select class="dropdown" @bind="Operation">
+                <option value="">Select an operation</option>
+                <option value="add">Add</option>
+                <option value="subtract">Subtract</option>
+                <option value="multiply">Multiply</option>
+                <option value="divide">Divide</option>
+            </select>
+        </div>
+        <div class="main-sub-container">
+            <button class="button" @onclick="Calculate">Submit</button>
+        </div>
+        
+        @if(IsShow)
+        {
+            <!--Hiding and displaying div only on button click-->
+            <div class="resultcontent main-sub-container">
+                <h3 class="label">Result</h3>
+                <p class="result">@Result</p>
+            </div>
+        }
+    </div>
+</main>

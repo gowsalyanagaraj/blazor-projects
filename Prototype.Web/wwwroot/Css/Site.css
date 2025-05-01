@@ -1,0 +1,99 @@
+﻿*
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	--background-color: darkblue;
+	--foreground-color: white;
+}
+
+body 
+{
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	height: 100vh;
+}
+
+.header
+{
+	height: 10vh;
+}
+
+.main
+{
+	height: 80vh;
+}
+
+.main-container
+{
+	height: 50%;
+	width: 40%;
+
+	flex-direction: column;
+	gap: 20px;
+
+	border: 2px solid var(--background-color);
+	border-radius: 5px;
+	box-shadow: 0 5px 5px var(--background-color);
+}
+
+.input-box, .dropdown, .button
+{
+	border: 1px solid var(--background-color);
+	border-radius: 5px;
+}
+
+.input-box 
+{
+	width: 50%;
+	height: 25px;
+}
+
+.dropdown {
+	height: 25px;
+}
+
+.button 
+{
+	cursor: pointer;
+	padding: 7px;
+}
+
+.footer 
+{
+	height: 10vh;
+}
+
+.header, .footer,
+.main,
+.main-container,
+.main-sub-container
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.header, .footer, .button
+{
+	background-color: var(--background-color);
+	color: var(--foreground-color);
+}
+
+.main-sub-container {
+	width: 80%;
+	flex-direction: row;
+	justify-content: start;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+@media only screen and (max-width:950px) {
+	.main-container {
+		height: 70%;
+		width: 80%;
+	}
+
+	.input-box{
+		width: 100%;
+	}
+}
