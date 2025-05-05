@@ -1,0 +1,24 @@
+﻿@page "/counter"
+
+<main class="main">
+    <div class="main-container">
+        <p>Here comes the magic!</p>
+        <h2>Let's Count: @currentCount</h2>
+        <div class="main-container-buttons">
+            <svg height="40" width="40" @onclick="IncrementCount">
+                <rect width="40" height="30" x="0" y="0" rx="5" ry="5" style="stroke:#e61054;fill: white;" />
+                <image href="./Images/add-symbol.svg" height="20" width="20" x="10" y="5"></image>
+            </svg>
+            <svg height="40" width="40" @onclick="DecrementCount">
+                <rect width="40" height="30" x="0" y="0" rx="5" ry="5" style="stroke:#e61054;fill: white;" />
+                <image href="./Images/minus-sign-of-a-line-in-horizontal-position.svg" height="20" width="20" x="10" y="5"></image>
+            </svg>
+            <svg height="40" width="40" @onclick="ResetCount">
+                <rect width="40" height="30" x="0" y="0" rx="5" ry="5" style="stroke:#e61054;fill: white;" />
+                <image href="./Images/reset (1).svg" height="20" width="20" x="10" y="5"></image>
+            </svg>
+        </div>
+    </div>
+    
+</main>
+

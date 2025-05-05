@@ -1,0 +1,74 @@
+﻿:root {
+	--background-color: #e61054;
+	--foreground-color: black;
+	--background-color-2: #f7f5f5;
+	--foreground-color-2: white;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background-color: var(--background-color-2);
+	text-align: center;
+}
+
+.header a {
+	text-decoration: none;
+	color: var(--foreground-color-2);
+}
+
+.main {
+	height: 80vh;
+}
+
+.main-container {
+	background-color: var(--foreground-color-2);
+	border-radius: 10px;
+	width: 50%;
+	height: 50%;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.main-container a {
+	text-decoration: none;
+	
+}
+
+.main-container a,.button{
+	border: none;
+	border-radius: 7px;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.main-container-buttons {
+	gap: 10px;
+}
+
+.header, .footer {
+	height: 10vh;
+	width: 100%;
+}
+
+.header, .footer, .main-container a, .button {
+	background-color: var(--background-color);
+	color: var(--foreground-color-2);
+}
+
+.header, .footer, .main, .main-container, .main-container-buttons {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@media only screen and (max-width: 800px){
+	.main-container {
+		width: 90%;
+		height: 70%;
+	}
+}
