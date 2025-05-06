@@ -1,7 +1,7 @@
 ﻿@page "/edittodo"
+@using Prototype.Web.Models
 @inject NavigationManager NavigationManager
 
-<NavBar />
 <main class="add-card">
     <div class="flex-card">
         <h3>Edit Task</h3>
@@ -9,3 +9,12 @@
         <button class="button" @onclick="Submit">Submit</button>
     </div>
 </main>
+
+@code {
+
+    public void Submit()
+    {
+        ToDoItems.list[ToDoListItem.index].Items = @input;
+        NavigationManager.NavigateTo("/");
+    }
+}

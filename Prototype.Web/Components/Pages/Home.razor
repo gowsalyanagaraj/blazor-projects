@@ -1,11 +1,18 @@
 ﻿@page "/"
+@using Prototype.Web.Models
+@using Prototype.Web.Components.Pages
+@inject NavigationManager NavigationManager
 
+<Button tasks="tasksList" eventCallback="Add"/>
 
-<NavBar />
-<Button />
-<br />
-<br />
-<br />
 <div>
-    <ToDoListItem />
+    <ToDoListItem tasks="tasksList"/>
 </div>
+
+@code{
+    
+	public void Add()
+	{
+		NavigationManager.NavigateTo("/addtodo");
+	}
+}

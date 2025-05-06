@@ -1,38 +1,46 @@
 ﻿@using Prototype.Web.Models;
 @inject NavigationManager NavigationManager
-@{
-    List<Home> tasks = ToDoItems.list;
-}
-<div class="items-card">
-    @if(tasks.Count<1){
-        <h3>Click Add to add a task</h3>
-        <br />
-    }
-    @foreach(var t in tasks){
-        <div class="items">
-            <h3>@t.Items  </h3>
-            <div class="items-div">
-                <button class="button" @onclick="()=>Done(t)">Done</button>
-                <button class="button" @onclick="()=>Edit(t)">Edit</button>
-                <button class="button" @onclick="()=>Delete(t)">Delete</button>
-            </div>
-        </div>
-    }
-</div>
 
 <div class="items-card">
-    @if (input.Count >= 1)
-    {
-        @foreach (var s in input)
+    <div class="item-container">
+        @if (tasks.Count < 1)
+        {
+            <h3>Click Add to add a task</h3>
+            <br />
+        }
+        @foreach (var t in tasks)
         {
             <div class="items">
-                <img src="./Images/green-tick-checkmark-icon-vector-22691505.jpg" alt="checkmark" />
-                <h3>@s</h3>
+                <h3>@t.Items  </h3>
+                <div class="items-div">
+                    <button class="button" @onclick="()=>Done(t)">Done</button>
+                    <button class="button" @onclick="()=>Edit(t)">Edit</button>
+                    <button class="button" @onclick="()=>Delete(t)">Delete</button>
+                </div>
             </div>
         }
-    }
+    </div>
+
+    <div class="item-container">
+        @if (input.Count >= 1)
+        {
+            @foreach (var s in input)
+            {
+                <div class="items">
+                     <img src="./Images/green-tick-checkmark-icon-vector-22691505.jpg" alt="checkmark" />
+                     <h3>@s</h3>
+                </div>
+            }
+        }
+    </div>
 </div>
 
+@code {
+    [Parameter]
+    public List<Home> tasks  { get; set; }
+    
+
+}
 
     
 

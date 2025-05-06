@@ -7,8 +7,6 @@ namespace Prototype.Web.Components.Pages
 
 		public static int index;
 
-		List<Home> tasks = ToDoItems.list;
-
 		public void Delete(Home t)
 		{
 			tasks.Remove(t);

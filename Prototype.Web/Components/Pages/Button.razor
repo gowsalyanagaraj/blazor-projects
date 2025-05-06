@@ -1,4 +1,9 @@
 ﻿@inject NavigationManager NavigationManager
 <div id="addbutton">
-    <button class="button add" @onclick="Add">Add</button>
+    <button class="button add" @onclick="eventCallback">Add</button>
 </div>
+
+@code {
+    [Parameter]
+    public List<Home> tasks { get; set; }
+}

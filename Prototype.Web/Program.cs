@@ -1,4 +1,5 @@
 using Prototype.Web.Components;
+using Prototype.Web.Models;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 

@@ -1,76 +1,80 @@
-﻿* {
+﻿:root {
+	--background-colour: forestgreen;
+	--background-colour-2: #f0f0f0;
+	--foreground-colour: white;
+	overflow: scroll;
+}
+:root::-webkit-scrollbar {
+	display: none;
+}
+* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	--fg: forestgreen;
-	--bg-white: #f0f0f0;
-	--white: white;
 }
 body {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	background-color: var(--bg-white);
-	
+	background-color: var(--background-colour-2);
 }
 .header {
-	grid-area: header;
-	background-color: var(--fg);
-	color: white;
-	padding: 20px;
-	text-align: center;
-	margin-bottom: 40px;
+	height: 10vh;
+	margin-bottom: 20px;
 }
 #addbutton {
-	grid-area: addbutton;
 	float: right;
-
+	height: 5vh;
 }
 .button {
-	background-color: var(--fg);
+	background-color: var(--background-colour);
 	border: none;
 	border-radius: 4px;
 	color: white;
 	padding: 10px;
-	text-align: center;
 	font-size: 16px;
 	cursor: pointer; 
 }
 .button.add {
 	right: 100px;
 	position:absolute;
+	justify-content: center;
 }
 .add-card {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	height: 80vh;
 }
 .flex-card {
 	justify-items: center;
-	flex-wrap:wrap;
+	flex-wrap: wrap;
 	width: 350px;
 	height: 200px;
-	background-color: var(--white);
+	background-color: var(--foreground-colour);
 	border-radius: 10px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 	padding: 30px;
 }
 .flex-card h3 {
-	text-align: center;
 	margin-bottom: 20px;
 }
 .textbox {
 	height: 37px;
 }
-
-.items-card {
-	grid-area: items;
-	display: flex;
+.items-card, .add-card {
 	flex-direction: column;
-	align-content: center;
+	justify-content: center;
+	align-items: center;
+}
+.items-card {
+	height: 80vh;
+	overflow-y: scroll;
+}
+.items-card::-webkit-scrollbar {
+	display: none;
+}
+.items-container {
+	flex-direction: row;
+	justify-content: flex-start;
 	flex-wrap: wrap;
 }
 .items {
-	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
 	gap: 1rem;
@@ -78,26 +82,46 @@ body {
 	padding: 50px;
 	width: 50rem;
 	height: max-content;
-	background-color: var(--white);
+	background-color: var(--foreground-colour);
 	border-radius: 10px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
 img {
 	height: 2rem;
 	width: 2rem;
 	border-radius: 50%;
 	margin-right: 10px;
 }
-
+.footer {
+	height: 5vh;
+	margin-top: 30px;
+}
+.header, .footer, .flex-card, .button {
+	text-align: center;
+}
+.header, #addbutton, .add-card, .items-card, .items, .footer {
+	display: flex;
+}
+.header, .footer {
+	justify-content: center;
+	align-items: center;
+	background-color: var(--background-colour);
+	color: var(--foreground-colour);
+	
+}
 @media screen and (max-width: 768px) {
 	.items {
 		flex-direction: column;
+		width: 90vw;
+	}
+
+	.items-container {
+		flex-direction: row;
+		row-gap: 1rem;
 	}
 
 	.items-card {
-		flex-direction: row;
-		width: 100%;
+		flex-direction: column;
 	}
 
 	.add-card {

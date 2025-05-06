@@ -5,11 +5,5 @@ namespace Prototype.Web.Models
 	{
 		public static List<Home> list = new List<Home>();
 
-		//public List<Home> getList()
-		//{
-		//	return list;
-		//}
-
-
 	}
 }
