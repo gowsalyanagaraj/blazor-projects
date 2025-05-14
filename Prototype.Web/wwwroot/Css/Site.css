@@ -23,6 +23,7 @@ body {
 
 .main {
 	height: 80vh;
+	flex-direction: row;
 }
 
 .main-container {
