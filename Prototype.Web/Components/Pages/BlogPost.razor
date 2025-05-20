@@ -1,0 +1,65 @@
+﻿@page "/blogpost/{BlogId:int}"
+
+<div class="content">
+    <div class="single-blog-post">
+        <img class="single-blog-image" src="./Images/[@BlogId].jpg" alt="BlogPostImage" />
+        <h2>@strBlogTitles[BlogId]</h2>
+        <p>@strBlogContentOne[BlogId]</p>
+        <p>@strBlogContentTwo[BlogId]</p>
+    </div>
+    <div class="author-details">
+        <img class="author-profile" src="./Images/Author[@BlogId].jpg" alt="BloggerProfile" />
+        <div>
+            <h3>About Author</h3>
+            <h4>@strAuthorName[BlogId]</h4>
+            <p>@strAuthorDetails[BlogId]</p>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public int BlogId { get; set; }
+    private string[] strBlogTitles = {
+        "Blogger's Journey",
+        "Art of Cooking",
+        "Adventures of a Traveller",
+        "Crochet Patterns",
+        "Change your skin for the better",
+        "Anxiety Relief for Pets"
+    };
+    private string[] strBlogContentOne = {
+        "Blogs are a great way to share your thoughts and ideas with the world. Whether you're a seasoned writer or just starting out, there are plenty of platforms available to help you get your message out there.",
+        "Cooking is an art that brings people together. Whether you're a novice in the kitchen or a seasoned chef, there's always something new to learn and explore.",
+        "Traveling is one of the most enriching experiences one can have. It allows you to explore new cultures, meet new people, and create unforgettable memories.",
+        "Learn how to crochet a flat circle following my step-by-step pattern. Flat circles are suitable for beginners and are quick and easy to make.",
+        "Was it a new laundry detergent? Cutting out chocolate from your diet? Drinking more water? Wearing less makeup?",
+        "Imagine this: you walk in the door, all set to play with your dog, but instead of a happy bark, you find them hiding or making sad sounds. It's tough for any dog owner to see."
+    };
+
+    private string[] strBlogContentTwo = {
+        "From personal blogs to professional websites, the possibilities are endless. So why not start your own blog today? With a little creativity and dedication, you can create a space that reflects your unique voice and perspective. You can even earn money from blogging!!",
+        "From trying out new recipes to experimenting with different ingredients, cooking can be a fun and rewarding experience. So why not get creative in the kitchen? With a little imagination and a willingness to try new things, you can whip up delicious meals that will impress your family and friends. Cooking is not just about feeding your body; it's about nourishing your soul. So put on your apron and get cooking!",
+        "Whether you're backpacking through Europe or relaxing on a beach in the Caribbean, there's something magical about discovering new places. So why not pack your bags and hit the road? With a little planning and an open mind, you can embark on an adventure that will broaden your horizons and change your life. Traveling is not just about the destination; it's about the journey. So go out there and explore the world!",
+        "They are also really versatile and can be used for many projects including: coasters, placemats the base of a nesting basket/storage pot and even reusable eco-friendly face scrubbies.",
+        "Trimming your bangs? Going to bed earlier? Finding a new product? A procedure? A new dermatologist whose knowledge parted the clouds and let the sun shine through? There are a few things that really helped me, but one immediately springs to mind: Kate Somerville Anti-Bac Clearing Lotion, which I’ve been using and loving for years. Finding it straight-up drastically changed my skin for the better. Without it, I will break out, no question.",
+        "Dogs can feel anxious, Many pet owners feel really sad when they see their pet feeling anxious or upset. From separation anxiety to noise phobias, our pets can experience a range of worries just like humans do.There are natural helpers for pets  CBD oil for pets. They're natural ways to make our pets feel better when they're feeling stressed."
+    };
+    private string[] strAuthorName = {
+        "Alexa",
+        "Siri",
+        "Sam",
+        "Bella",
+        "Mia",
+        "Lucas"
+    };
+    private string[] strAuthorDetails = {
+        "Content Creator, Journalist, and Freelance Writer",
+        "Cook, Entertainer, and Influencer",
+        "Business Owner, Traveller, and Influencer",
+        "Business Owner, Crocheter, and Blogger",
+        "Content Creator, Influencer, and Blogger",
+        "Pet Owner, Influencer, and Blogger"
+    };
+}

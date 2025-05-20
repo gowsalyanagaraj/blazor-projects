@@ -1,0 +1,44 @@
+﻿@page "/blog"
+@inject NavigationManager Navigation
+
+<div class="blog-content">
+    <div class="blog-post" @onclick = "() => PostClick(0)">
+        <img class="blog-image" src="./Images/[0].jpg" alt="BloggerImage" />
+        <p>Blogs are a great way to share your thoughts and ideas with the world.</p>
+        <a href="/blogpost/0">Read More</a>
+    </div>
+    <div class="blog-post" @onclick="() => PostClick(1)">
+        <img class="blog-image" src="./Images/[1].jpg" alt="CookingImage" />
+        <p>Cooking is an art that brings people together. Whether you're a novice in the kitchen or a seasoned chef, there's always something new to learn and explore.</p>
+        <a href="/blogpost/1">Read More</a>
+    </div>
+    <div class="blog-post" @onclick="() => PostClick(2)">
+        <img class="blog-image" src="./Images/[2].jpg" alt="TravelImage" />
+        <p>Traveling is one of the most enriching experiences one can have. It allows you to explore new cultures, meet new people, and create unforgettable memories.</p>
+        <a href="/blogpost/2">Read More</a>
+    </div>
+    <div class="blog-post" @onclick="() => PostClick(3)">
+        <img class="blog-image" src="./Images/[3].jpg" alt="CrochetImage" />
+        <p>Learn how to crochet a flat circle following my step-by-step pattern. Flat circles are suitable for beginners and are quick and easy to make.</p>
+        <a href="/blogpost/3">Read More</a>
+    </div>
+    <div class="blog-post" @onclick="() => PostClick(4)">
+        <img class="blog-image" src="./Images/[4].jpg" alt="MakeupBlogImage" />
+        <p>Was it a new laundry detergent? Cutting out chocolate from your diet? Drinking more water? Wearing less makeup?</p>
+        <a href="/blogpost/4">Read More</a>
+    </div>
+    <div class="blog-post" @onclick="() => PostClick(5)">
+        <img class="blog-image" src="./Images/[5].jpg" alt="PetsImage" />
+        <p>Imagine this: you walk in the door, all set to play with your dog, but instead of a happy bark, you find them hiding or making sad sounds. It's tough for any dog owner to see.</p>
+        <a href="/blogpost/5">Read More</a>
+    </div>
+</div>
+
+
+@code 
+{
+    private void PostClick(object id)
+    {
+        Navigation.NavigateTo($"/blogpost/{id}");
+    }
+}
