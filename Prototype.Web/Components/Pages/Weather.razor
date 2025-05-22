@@ -1,0 +1,111 @@
+﻿@using Prototype.Web.Services
+@using Prototype.Web.Interfaces
+@inject IServiceProvider Service
+
+<h2>Checkout the weather in your area!!</h2>
+<button class="button" @onclick="ButtonClick">Click Here</button>
+
+@if (forecasts == null && forecasts2 == null && forecasts3 == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <h3>Singleton</h3>
+    <div class="main-content">
+        @foreach (var forecast in forecasts){
+            <div class="card">
+                @{
+                    strToday = "";
+                    DateTime dt = new DateTime(forecast.Date.Year, forecast.Date.Month, forecast.Date.Day);
+                    if (dt.Date == DateTime.Today.Date)
+                    {
+                        strToday = "Today";
+                    }
+                }
+                <div class="highlight-font">@strToday</div>
+                <h3>@forecast.Date.ToLongDateString()</h3>
+                <p>@dt.DayOfWeek</p>
+                <svg height="100" width="150">
+                    <image href="./Images/[@forecast.Summary].svg" height="100" width="150"></image>
+                </svg>
+                <h4>@forecast.Summary</h4>
+                <p>@forecast.TemperatureC °C / @forecast.TemperatureF °F</p>
+            </div>
+        }
+    </div>
+    <h3>Scoped</h3>
+    <div class="main-content">
+        @foreach (var forecast in forecasts2)
+        {
+            <div class="card">
+                @{
+                    strToday = "";
+                    DateTime dt = new DateTime(forecast.Date.Year, forecast.Date.Month, forecast.Date.Day);
+                    if (dt.Date == DateTime.Today.Date)
+                    {
+                        strToday = "Today";
+                    }
+                }
+                <div class="highlight-font">@strToday</div>
+                <h3>@forecast.Date.ToLongDateString()</h3>
+                <p>@dt.DayOfWeek</p>
+                <svg height="100" width="150">
+                    <image href="./Images/[@forecast.Summary].svg" height="100" width="150"></image>
+                </svg>
+                <h4>@forecast.Summary</h4>
+                <p>@forecast.TemperatureC °C / @forecast.TemperatureF °F</p>
+            </div>
+        }
+    </div>
+    <h3>Transient</h3>
+    <div class="main-content">
+        @foreach (var forecast in forecasts3)
+        {
+            <div class="card">
+                @{
+                    strToday = "";
+                    DateTime dt = new DateTime(forecast.Date.Year, forecast.Date.Month, forecast.Date.Day);
+                    if (dt.Date == DateTime.Today.Date)
+                    {
+                        strToday = "Today";
+                    }
+                }
+                <div class="highlight-font">@strToday</div>
+                <h3>@forecast.Date.ToLongDateString()</h3>
+                <p>@dt.DayOfWeek</p>
+                <svg height="100" width="150">
+                    <image href="./Images/[@forecast.Summary].svg" height="100" width="150"></image>
+                </svg>
+                <h4>@forecast.Summary</h4>
+                <p>@forecast.TemperatureC °C / @forecast.TemperatureF °F</p>
+            </div>
+        }
+    </div>
+}
+
+@code 
+{
+    private string strToday = "";
+    private WeatherForecast[]? forecasts;
+    private WeatherForecast[]? forecasts2;
+    private WeatherForecast[]? forecasts3;
+
+    protected override void OnInitialized()
+    {
+        ButtonClick();
+        base.OnInitialized();
+    }
+
+    private void ButtonClick()
+    {
+        ISingletonService singleton = Service.GetRequiredService<ISingletonService>();
+        forecasts = singleton.GetForecastAsync();
+
+        IScopedService scoped = Service.GetRequiredService<IScopedService>();
+        forecasts2 = scoped.GetForecastAsync();
+
+        ITransientService transient = Service.GetRequiredService<ITransientService>();
+        forecasts3 = transient.GetForecastAsync();
+    }
+}

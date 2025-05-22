@@ -1,0 +1,125 @@
+﻿:root
+{
+	--background-color: #454545;
+	--foreground-color: white;
+	--foreground-color2: #cacccf;
+	overflow: scroll;
+}
+
+:root::-webkit-scrollbar
+{
+	display: none;
+}
+
+*
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body
+{
+	font-family: 'Bookman Old Style';
+}
+
+.header
+{
+	font-family: 'Baskerville Old Face';
+	height: 15vh;
+	border-bottom: 0.5px solid var(--foreground-color2);
+	box-shadow: 0 0 5px var(--foreground-color2);
+}
+
+a
+{
+	text-decoration: none;
+	color: var(--background-color);
+}
+
+.main
+{
+	height: fit-content;
+	width: 100%;
+	gap: 30px;
+	text-align: center;
+	padding: 20px;
+}
+
+.main-content
+{
+	gap: 20px;
+	flex-wrap: wrap;
+}
+
+h3, h4
+{
+	color: var(--background-color);
+}
+
+.card
+{
+	border: 0.5px solid var(--foreground-color2);
+	border-radius: 25px;
+	box-shadow: 0 5px 5px var(--foreground-color2);
+	gap: 10px;
+	padding: 20px;
+}
+
+.highlight-font, .button
+{
+	background-color: var(--background-color);
+	border-radius: 10px;
+	color: var(--foreground-color);
+	font-family: 'Baskerville Old Face';
+	font-size: 1.5rem;
+}
+
+.footer {
+	height: 5vh;
+	background-color: var(--background-color);
+	color: var(--foreground-color);
+}
+
+.header, .footer
+{
+	width: 100%;
+}
+
+.header, .footer, .main, .main-content, .card
+{
+	display: flex;
+}
+
+.header, .footer, .main, .card
+{
+	flex-direction: column;
+}
+
+.header, .footer, .main, .main-content
+{
+	justify-content: center;
+	align-items: center;
+}
+
+.main-content
+{
+	flex-direction: row;
+}
+
+@media only screen and (max-width: 900px)
+{
+	.main
+	{
+		height: max-content;
+		width: 100%;
+	}
+}
+
+@media only screen and (min-height: 1000px) and (max-width: 900px)
+{
+	.main
+	{
+		height: 80vh;
+	}
+}
