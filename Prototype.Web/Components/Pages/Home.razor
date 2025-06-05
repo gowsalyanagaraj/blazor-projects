@@ -1,3 +1,67 @@
 ﻿@page "/"
 
-<h1>Pikachu!</h1>
+<div class="main">
+    <EditForm Model="RegisterData" class="main-content">
+        <h2>Registration Form</h2>
+        <DataAnnotationsValidator />
+        @* <ValidationSummary class="error-summary" /> *@
+        <div class="form">
+            <div>
+                <label>First Name</label>
+                <InputText @bind-Value=RegisterData.FirstName class="text-input"></InputText>
+                <ValidationMessage For="@(() => RegisterData.FirstName)" class="error-message" />
+            </div>
+            <div>
+                <label>Last Name</label>
+                <InputText @bind-Value=RegisterData.LastName class="text-input"></InputText>
+                <ValidationMessage For="@(() => RegisterData.LastName)" class="error-message" />
+            </div>
+            <div>
+                <label>Date of Birth</label>
+                <InputDate @bind-Value=RegisterData.DoB class="text-input"></InputDate>
+                <ValidationMessage For="@(() => RegisterData.DoB)" class="error-message" />
+            </div>
+            <div>
+                <label>Email</label>
+                <InputText @bind-Value=RegisterData.EmailAddress class="text-input"></InputText>
+                <ValidationMessage For="@(() => RegisterData.EmailAddress)" class="error-message" />
+            </div>
+            <div>
+                <label>Password</label>
+                <InputText @bind-Value=RegisterData.Password class="text-input"></InputText>
+                <ValidationMessage For="@(() => RegisterData.Password)" class="error-message" />
+            </div>
+            <div>
+                <label>Confirm Password</label>
+                <InputText @bind-Value=RegisterData.ConfirmPassword class="text-input"></InputText>
+                <ValidationMessage For="@(() => RegisterData.ConfirmPassword)" class="error-message" />
+            </div>
+            <button @onclick="Submit">Submit</button>
+            <div>
+                <h4>@submitMessage</h4>
+            </div>
+        </div>
+        
+    </EditForm>
+</div>
+
+
+@code
+{
+    RegisterFormData RegisterData = new RegisterFormData();
+
+    private string submitMessage = "";
+
+    private void Submit()
+    {
+        if (RegisterData.FirstName != string.Empty && RegisterData.LastName != string.Empty && RegisterData.DoB != DateOnly.FromDateTime(DateTime.Today) && RegisterData.EmailAddress != string.Empty && RegisterData.Password != string.Empty && RegisterData.ConfirmPassword != string.Empty)
+        {
+            submitMessage = "Registered Successfully!!";
+        }
+        else
+        {
+            submitMessage = "Enter all the required fields!";
+        }
+        
+    }
+}
