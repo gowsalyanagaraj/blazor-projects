@@ -1,3 +1,42 @@
 ﻿@page "/"
 
-<h1>Pikachu!</h1>
+<main class="main">
+    @if (products == null)
+    {
+        <div class="spinner"></div>
+    }
+    else
+    {
+        <div class="main-content">
+            @foreach (var product in products)
+            {
+                <div class="card">
+                    <h3>@product</h3>
+                    <svg height="150" width="150">
+                        <image href="./Images/[@product].svg" height="150" width="150"></image>
+                    </svg>
+                </div>
+            }
+        </div>
+    }
+</main>
+
+
+@code
+{
+    List<string> products;
+
+    protected override async Task OnInitializedAsync()
+    {
+        products = await Task.Run(ProductCatalog);
+    }
+
+    private List<string> ProductCatalog()
+    {
+        List<string> dresses = ["Hat","Heels","Pants","Party-dress","Pyjamas-suit","Skirt","Slippers","Tie"];
+        System.Threading.Thread.Sleep(5000);
+        return dresses;
+    }
+
+  
+}
