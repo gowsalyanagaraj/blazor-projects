@@ -1,0 +1,89 @@
+﻿:root
+{
+	--background-color: #32a852;
+	--foreground-color: white;
+
+}
+
+*
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body 
+{
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header
+{
+	border-bottom: 1px solid var(--background-color);
+	box-shadow: 0 0 2px solid var(--background-color);
+	gap: 10px;
+}
+
+#maps
+{
+	height: 500px;
+	width: 500px;
+}
+
+.button
+{
+	background-color: var(--background-color);
+	color: var(--foreground-color);
+	border: none;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.main
+{
+	height: 80vh;
+}
+
+.main-content
+{
+	width: 80%;
+	gap: 10px;
+}
+
+.footer
+{
+	background-color: var(--background-color);
+	color: var(--foreground-color);
+}
+
+.header, .footer, .main, .main-content
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.main-content, .main
+{
+	flex-direction: column;
+}
+
+.header, .footer
+{
+	height: 10vh;
+	width: 100vw;
+}
+
+@media only screen and (max-width: 800px)
+{
+	.main
+	{
+		width: 100%;
+		height: auto;
+	}
+	#maps
+	{
+		height: 500px;
+		width: 100%;
+	}
+}

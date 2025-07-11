@@ -1,3 +1,62 @@
 ﻿@page "/"
+@inject IJSRuntime jSRuntime
+<main class="main">
+    <div class="main-content">
+        <h2>Let's Explore London</h2>
+        <p>
+            London, the capital of England and the United Kingdom,
+            is a 21st-century city with history stretching back to Roman times.
+            At its centre stand the imposing Houses of Parliament,
+            the iconic ‘Big Ben’ clock tower and Westminster Abbey, site of British monarch coronations.
+            Across the Thames River, the London Eye observation wheel provides panoramic views of the South Bank
+            cultural complex, and the entire city.
+        </p>
+        <select @bind="selectOption">
+            <option value="">Select a monumental place</option>
+            <option value="Buckingham Palace">Buckingham Palace</option>
+            <option value="Tower of London">Tower of London</option>
+            <option value="Big Ben">Big Ben</option>
+            <option value="Tower Bridge">Tower Bridge</option>
+            <option value="British Museum">British Museum</option>
+        </select>
+        <button class="button" @onclick="ViewMap">Map View to know more!</button>
+        <div id="maps"></div>
+    </div>
+</main>
 
-<h1>Pikachu!</h1>
+@code
+{
+    private string selectOption { get; set; }
+    private void ViewMap()
+    {
+        var x = 51.505;
+        var y = -0.09;
+        if(selectOption == "Buckingham Palace")
+        {
+            x = 51.501476;
+            y = -0.140634;
+        }
+        else if(selectOption == "Tower of London")
+        {
+            x = 51.508530;
+            y = -0.076132;
+        }
+        else if(selectOption == "Big Ben")
+        {
+            x = 51.5007;
+            y = -0.1246;
+        }
+        else if(selectOption == "Tower Bridge")
+        {
+            x = 51.505554;
+            y = -0.075278;
+        }
+        else if(selectOption == "British Museum")
+        {
+            x = 51.518757;
+            y = -0.126168;
+        }
+        jSRuntime.InvokeVoidAsync("mapLeaflet", x, y);
+        StateHasChanged();
+    }
+}
