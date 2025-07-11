@@ -1,0 +1,116 @@
+﻿:root {
+	--background-color: #454545;
+	--foreground-color: white;
+	--foreground-color2: #cacccf;
+	overflow: scroll;
+}
+
+	:root::-webkit-scrollbar {
+		display: none;
+	}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Bookman Old Style';
+	display: grid;
+	grid-template-areas:
+		"header header header"
+		"main main side";
+	grid-template-rows: 20vh auto;
+	grid-template-columns: 40vw 30vw 30vw;
+}
+
+.header {
+	grid-area: header;
+	font-family: 'Baskerville Old Face';
+	border-bottom: 0.5px solid var(--foreground-color2);
+	box-shadow: 0 0 5px var(--foreground-color2);	
+}
+
+a {
+	text-decoration: none;
+	color: var(--background-color);
+}
+
+h2 {
+	border-bottom: 0.5px solid var(--foreground-color2);
+	padding: 10px;
+	margin-top: 10px;
+	text-align: center;
+}
+
+h3, h4 {
+	color: var(--background-color);
+}
+
+.products-content
+{
+	grid-area: main;
+	flex-direction: row;
+	gap: 40px;
+	flex-wrap: wrap;
+	margin: 10px;
+}
+
+.cart-content {
+	grid-area: side;
+	flex-direction: column;
+	width: 95%;
+	border-left: 0.5px solid var(--foreground-color2);
+	justify-content: flex-start;
+	align-items: center;
+	gap: 10px;
+}
+
+.cart-cards {
+	flex-direction: row;
+	border: 0.5px solid var(--foreground-color2);
+	border-radius: 25px;
+	box-shadow: 0 5px 5px var(--foreground-color2);
+	gap: 30px;
+	padding: 20px;
+	justify-content:center;
+	align-items: center;
+}
+.card
+{
+	flex-direction: column;
+	border: 0.5px solid var(--foreground-color2);
+	border-radius: 25px;
+	box-shadow: 0 5px 5px var(--foreground-color2);
+	gap: 10px;
+	padding: 20px;
+}
+
+.button {
+	background-color: var(--background-color);
+	color: var(--foreground-color);
+	border: 0.5px solid var(--foreground-color2);
+	border-radius: 25px;
+	box-shadow: 0 5px 5px var(--foreground-color2);
+	padding: 10px;
+}
+
+.header, .products-content, .cart-content, .cart-cards, .card
+{
+	display: flex;
+}
+.header, .products-content, .card {
+	justify-content: center;
+	align-items: center;
+}
+@media only screen and (max-width: 920px) {
+	body {
+		grid-template-areas:
+			"header"
+			"main"
+			"side";
+		grid-template-rows: auto auto auto auto;
+		grid-template-columns: 100%;
+	}
+}

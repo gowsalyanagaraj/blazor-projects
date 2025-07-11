@@ -1,3 +1,19 @@
 ﻿@page "/"
+@using Prototype.Web.Services
+@inject StateContainer StateContainer
+@implements IDisposable
 
-<h1>Pikachu!</h1>
+<Products/>
+<Cart/>
+
+@code
+{
+    protected override void OnInitialized()
+    {
+        StateContainer.OnChange += StateHasChanged;
+    }
+    public void Dispose()
+    {
+        StateContainer.OnChange -= StateHasChanged;
+    }
+}

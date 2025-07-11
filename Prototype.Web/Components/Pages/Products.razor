@@ -1,0 +1,52 @@
+﻿@using Prototype.Web.Services
+@inject StateContainer StateContainer
+@implements IDisposable
+
+<div class="products-content">
+    @foreach(var product in products)
+    {
+        <div class="card" data-bind="Index">
+            <h3>@product.Key</h3>
+            <svg height="150" width="150">
+                <image href="./Images/[@product.Key].svg" height="150" width="150"></image>
+            </svg>
+            <h3>$@product.Value</h3>
+            <button class="button" @onclick="() => AddToCart(product.Key, product.Value)">Add to Cart</button>
+        </div>
+    }
+</div>
+
+@code
+{
+    public static List<long> price = [];
+    Dictionary<string, long> products = new Dictionary<string, long>
+    {
+        {"Hat", 25},
+        {"Heels", 80},
+        {"Pants", 52},
+        {"Party-dress", 250},
+        {"Pyjamas-suit", 70},
+        {"Skirt", 100},
+        {"Slippers", 60},
+        {"Tie", 35}
+    };
+    Cart cart = new Cart();
+    protected override void OnInitialized()
+    {
+        Cart.productsList = products;
+        price = products.Values.ToList();
+        StateContainer.OnChange += StateHasChanged;
+    }
+
+    public void AddToCart(string productName, long price)
+    {
+        StateContainer.Property = StateContainer.Property + price;
+        cart.GetCartProducts(productName, price);
+        StateContainer.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        StateContainer.OnChange -= StateHasChanged;
+    }
+}

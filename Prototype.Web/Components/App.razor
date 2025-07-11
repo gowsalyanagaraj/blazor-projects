@@ -10,11 +10,11 @@
         @* ReSharper disable Html.PathError *@
         <link rel="stylesheet" href="Prototype.Web.styles.css"/>
         @* ReSharper restore Html.PathError *@
-        
+        <link rel="stylesheet" href="./Css/Site.css" />
         <HeadOutlet />
     </head>
     <body>
-        <Routes @rendermode="InteractiveServer" />
+        <Routes @rendermode="new InteractiveServerRenderMode(false)" />
 
         @* ReSharper disable Html.PathError *@
         <script src="_framework/blazor.web.js"></script>

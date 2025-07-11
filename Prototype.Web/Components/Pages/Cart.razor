@@ -1,0 +1,95 @@
+﻿@using Prototype.Web.Services
+@inject StateContainer StateContainer
+@implements IDisposable
+
+<div class="cart-content">
+    <h2>Your Cart</h2>
+    @if (cartProducts.Count > 0)
+    {
+        @foreach (var product in cartProducts)
+        {
+            long originalPrice = productsList[product.ProductName];
+            <div class="cart-cards">
+                <svg height="60" width="60">
+                    <image href="./Images/[@product.ProductName].svg" height="60" width="60"></image>
+                </svg>
+                <h3>@product.ProductName </h3>
+                <button class="button" @onclick="() => DecreaseQuantity(product,originalPrice)">-</button>
+                <h3>@product.Quantity</h3>
+                <button class="button" @onclick="() => IncreaseQuantity(product, originalPrice)">+</button>
+                <h3>$@product.Price</h3>
+            </div>
+        }
+    }
+    <h3>Total Amount: $@StateContainer.Property</h3>
+</div>
+
+@code
+{
+    class CartProducts
+    {
+        public string ProductName { get; set; } = string.Empty;
+        public long Price { get; set; }
+        public int Quantity { get; set; }
+    }
+    static List<CartProducts> cartProducts;
+    public static Dictionary<string, long> productsList;
+    protected override void OnInitialized()
+    {
+        cartProducts = new List<CartProducts>();
+        StateContainer.OnChange += StateHasChanged;
+    }
+    public void GetCartProducts(string productName, long price)
+    {
+        int indexValue = CheckCart(productName);
+        if(indexValue != -1)
+        {
+            cartProducts[indexValue].Quantity = cartProducts[indexValue].Quantity + 1;
+            cartProducts[indexValue].Price = price * cartProducts[indexValue].Quantity;
+        }
+        else
+        {
+            CartProducts newProduct = new CartProducts() { ProductName = productName, Price = price, Quantity = 1 };
+            cartProducts.Add(newProduct);
+        }
+    }
+    private int CheckCart(string productName)
+    {
+        for(int i=0; i<cartProducts.Count; i++)
+        {
+            if(cartProducts[i].ProductName == productName)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+    private void IncreaseQuantity(CartProducts product, long originalPrice)
+    {
+        if(product.Quantity>=0)
+        {
+            product.Quantity = product.Quantity + 1;
+            product.Price = product.Price + originalPrice;
+            StateContainer.Property = StateContainer.Property + originalPrice;
+            StateContainer.OnChange += StateHasChanged;
+        }
+    }
+    private void DecreaseQuantity(CartProducts product, long originalPrice)
+    {
+        if(product.Quantity>0)
+        {
+            product.Quantity = product.Quantity - 1;
+            product.Price = product.Price - originalPrice;
+            StateContainer.Property = StateContainer.Property - originalPrice;
+            if(product.Quantity == 0)
+            {
+                cartProducts.Remove(product);
+            }
+            StateContainer.OnChange += StateHasChanged;
+        }
+    }
+    public void Dispose()
+    {
+        StateContainer.OnChange -= StateHasChanged;
+    }
+}
