@@ -1,3 +1,19 @@
 ﻿@page "/"
 
-<h1>Pikachu!</h1>
+<AddTask OnTaskValueChanged="@AddTask"/>
+<Tasks tasks="@tasks"/>
+
+@code
+{
+    List<TaskList> tasks = new List<TaskList>
+        {
+            new TaskList { Name = "Bug Fixing", EstimatedHours = 8, Priority = Priority.Medium},
+            new TaskList { Name = "Style Changes", EstimatedHours = 5, Priority = Priority.Low}
+        };
+
+    private void AddTask(TaskList task)
+    {
+        tasks.Add(task);
+    }
+
+}

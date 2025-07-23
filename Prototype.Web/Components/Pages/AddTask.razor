@@ -1,0 +1,45 @@
+﻿<div>
+    <button class="button add" onclick="modal_one.showModal()">Add Task</button> 
+</div>
+
+<dialog id="modal_one" class="modal">
+    <div class="modal-contents">
+        <div class="modal-content-row">
+            <h2>Add a New Task</h2>
+            <button class="modal-content-button" onclick="modal_one.close()"><h3>X</h3></button>
+        </div>
+        <div class="modal-content-row">
+            <h3>Task Name</h3>
+            <input type="text" @bind="TaskName" />
+        </div>
+        <div class="modal-content-row">
+            <h3>Estimated Hours</h3>
+            <input type="number" @bind="TaskHours" />
+        </div>
+        <div class="modal-content-row">
+            <h3>Priority</h3>
+            <select @bind="priority">
+                <option value="@Priority.Low">Select a Priority</option>
+                <option value="@Priority.High">High</option>
+                <option value="@Priority.Medium">Medium</option>
+                <option value="@Priority.Low">Low</option>
+            </select>
+            <button class="button" @onclick="Submit">Submit</button>
+        </div>
+    </div>
+</dialog>
+
+@code 
+{
+    private string TaskName { get; set; } = string.Empty;
+    private int TaskHours { get; set; } = 0;
+    private Priority priority;
+
+    [Parameter]
+    public EventCallback<TaskList> OnTaskValueChanged { get; set; }
+
+    private void Submit()
+    {
+        OnTaskValueChanged.InvokeAsync(new TaskList { Name = TaskName, EstimatedHours = TaskHours, Priority = priority });
+    }
+}

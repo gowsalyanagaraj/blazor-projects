@@ -1,0 +1,44 @@
+﻿<div class="main-contents">
+    <h2>Your Task List</h2>
+
+    <div class="table-head-row">
+        <h3>Name</h3>
+        <h3>Alloted Hours</h3>
+        <h3>Priority</h3>
+        <h3>Status</h3>
+        <h3>Edit</h3>
+    </div>
+    @foreach(var task in tasks)
+    {
+        var styleClass = "normal";
+        <div class="table-body-row">
+            <p>@task.Name</p>
+            <p>@task.EstimatedHours</p>
+            <p>@task.Priority</p>
+            @if(task.IsCompleted == Status.Completed)
+            {
+                styleClass = "highlight";
+            }
+            <p class="@styleClass">@task.IsCompleted</p>
+            <EditTask OnEditTaskChanged="EditTask" task="@task" ElementId="@task.Id.ToString().Substring(0,5)"/>
+        </div>
+    }
+</div>
+
+@code 
+{
+    [Parameter]
+    public List<TaskList> tasks { get; set; }
+
+    private void EditTask(TaskList task)
+    {
+        tasks.ForEach(p => { if(p.Id == task.Id)
+            {
+                p.Name = task.Name;
+                p.EstimatedHours = task.EstimatedHours;
+                p.Priority = task.Priority;
+                p.IsCompleted = task.IsCompleted;
+            }
+        });
+    }
+}

@@ -1,0 +1,168 @@
+﻿:root
+{
+	--background-color: #fcba03;
+	--foreground-color: #13A303;
+	--primary-color: black;
+	--secondary-color: white;
+	--primary-color2: #f2e161;
+	--secondary-color2: #61f2a5;
+}
+
+*
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body
+{
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	width: 100%;
+}
+
+.header
+{
+	background-color: var(--background-color);
+	color: var(--primary-color);
+	border-bottom: 2px solid var(--foreground-color);
+	box-shadow: 0 0 2px var(--foreground-color);
+}
+
+.header a
+{
+	text-decoration: none;
+	color: var(--primary-color);
+}
+
+.main
+{
+	flex-direction: column;
+	height: 80vh;
+	gap: 10px;
+	justify-content: center;
+	align-items: center;
+}
+
+.button
+{
+	background-color: var(--foreground-color);
+	color: var(--secondary-color);
+	padding: 10px;
+	border: none;
+	border-radius: 10px;
+}
+
+.button.add
+{
+	position: absolute;
+	right: 25vw;
+}
+
+.table-head-row
+{
+	gap: 20px;
+	border-bottom: 1px solid var(--foreground-color);
+	padding: 10px;
+}
+
+.table-body-row
+{
+	border-bottom: 1px solid var(--foreground-color);
+	padding: 5px;
+}
+
+.table-body-row, .table-head-row
+{
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+p.normal
+{
+	background-color: var(--primary-color2);
+	color: var(--primary-color);
+}
+
+p.highlight
+{
+	background-color: var(--secondary-color2);
+	color: var(--primary-color);
+}
+
+p.highlight, p.normal
+{
+	padding: 5px;
+	border-radius: 20px;
+}
+
+.main-contents
+{
+	flex-direction: column;
+	gap: 10px;
+}
+
+.modal
+{
+	position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+	border: none;
+	border-radius: 10px;
+}
+
+.modal-contents
+{
+	flex-direction: column;
+	gap: 20px 20px;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 20px;
+	width: 80%;
+}
+
+.modal-content-row
+{
+	gap: 10px;
+}
+
+.modal-content-button
+{
+	position: absolute;
+	right: 2%;
+	border: none;
+	background: none;
+
+}
+
+.footer
+{
+	background-color: var(--background-color);
+	color: var(--primary-color);
+}
+
+.header, .footer, .main, .table-head-row, .table-body-row, .main-contents, .modal-contents, .modal-content-row
+{
+	display: flex;
+}
+
+.header, .footer
+{
+	justify-content:center;
+	align-items: center;
+}
+
+.header, .footer
+{
+	height: 10vh;
+}
+
+@media only screen and (max-width: 750px)
+{
+	.modal
+	{
+		width: max-content;
+	}
+}

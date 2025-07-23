@@ -1,0 +1,65 @@
+﻿@inject IJSRuntime jSRuntime
+
+<button class="button" @onclick="@DialogBoxOpen">Edit</button> 
+
+<dialog id="@ElementId" class="modal">
+    <div class="modal-contents">
+        <div class="modal-content-row">
+            <h2>Edit Task</h2>
+            <button class="modal-content-button" @onclick="@DialogBoxClose">X</button>
+        </div>
+        <div class="modal-content-row">
+            <h3>Task Name</h3>
+            <input type="text" @bind="task.Name" />
+        </div>
+        <div class="modal-content-row">
+            <h3>Estimated Hours</h3>
+            <input type="number" @bind="task.EstimatedHours" />
+        </div>
+        <div class="modal-content-row">
+            <h3>Priority</h3>
+            <select @bind="task.Priority">
+                <option value="">Change the task priority</option>
+                <option value="@Priority.High">High</option>
+                <option value="@Priority.Medium">Medium</option>
+                <option value="@Priority.Low">Low</option>
+            </select>
+        </div>
+        <div class="modal-content-row">
+            <h3>Status</h3>
+            <select @bind="task.IsCompleted">
+                <option value="">Change Your Status</option>
+                <option value="@Status.Progress">In Progress</option>
+                <option value="@Status.Completed">Mark as Completed</option>
+            </select>
+            <button class="button" @onclick="Confirm">Confirm</button>
+        </div>
+    </div>
+</dialog>
+
+@code 
+{
+    [Parameter]
+    public TaskList task { get; set; }
+
+    [Parameter]
+    public string ElementId { get; set; }
+
+    [Parameter]
+    public EventCallback<TaskList> OnEditTaskChanged { get; set; }
+
+    private void Confirm()
+    {
+        OnEditTaskChanged.InvokeAsync(task);
+    }
+
+    private void DialogBoxOpen()
+    {
+        jSRuntime.InvokeVoidAsync("dialogOpen", ElementId);
+    }
+
+    private void DialogBoxClose()
+    {
+        jSRuntime.InvokeVoidAsync("dialogClose", ElementId);
+    }
+}
