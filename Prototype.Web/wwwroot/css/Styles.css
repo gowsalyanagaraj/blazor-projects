@@ -1,0 +1,84 @@
+﻿:root
+{
+	--background-color: #3492eb;
+	--foreground-color: #f8fbfe;
+}
+
+*
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body
+{
+	font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+}
+
+.header
+{
+	height: 15vh;
+}
+
+.header a
+{
+	text-decoration: none;
+	color: var(--foreground-color);
+}
+
+.main
+{
+	height: 75vh;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.main-content
+{
+	overflow-y: scroll;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.main-content::-webkit-scrollbar
+{
+	display: none;
+}
+
+.card
+{
+	height: 150px;
+	width: 300px;
+	border: 1px solid var(--background-color);
+	border-radius: 25px;
+	box-shadow: 0 1px 1px var(--background-color);
+}
+
+.user-image
+{
+	height: 100px;
+	width: 100px;
+}
+
+.footer
+{
+	height: 10vh;
+}
+
+.header, .footer
+{
+	background-color: var(--background-color);
+	color: var(--foreground-color);
+}
+
+.header, .footer, .main, .card, .main-content
+{
+	display: flex;
+}
+
+.header, .footer, .main, .card
+{
+	justify-content: center;
+	align-items: center;
+}

@@ -1,3 +1,39 @@
 ﻿@page "/"
 
-<h1>Pikachu!</h1>
+<div class="main-content">
+    <Virtualize Items="contacts" ItemSize="500">
+        <div class="card">
+            <img class="user-image" src="./images/user.svg" alt="User Profile" />
+            <div class="user-details">
+                <h3>@context.Name</h3>
+                <p>+91 @context.PhoneNumber</p>
+            </div>
+        </div>
+    </Virtualize>
+</div>
+
+@code
+{
+    List<ContactList> contacts = GetContacts(1000);
+
+    private static List<ContactList> GetContacts(int nLimit)
+    {
+        List<ContactList> lists = new List<ContactList>();
+
+        string[] Names = ["Alexa", "Benjamin", "Carcel", "Demian", "Ethan", "Fiona", "Gorgia", "Henry", 
+        "Illios", "John", "Kristoff", "Leona", "Marsi", "Nora", "Ophelia", "Penelope", "Qubert",
+        "Ray", "Steve", "Tim", "Ursula", "Viki", "Walter", "Xeno", "Yousef", "Zed"];
+
+        Random rnd = new();
+
+        long minValue = 1000000000;
+        long maxValue = 9999999999;
+
+        for(int i = 1; i < nLimit; i++)
+        {
+            int nIndex = rnd.Next(Names.Length);
+            lists.Add(new ContactList{ Id = i, Name = Names[nIndex], PhoneNumber = rnd.NextInt64(minValue, maxValue)});
+        }
+        return lists;
+    }
+}
