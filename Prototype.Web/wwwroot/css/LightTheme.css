@@ -1,0 +1,51 @@
+﻿:root
+{
+	--background-color: #f1efec;
+	--foreground-color: #030303;
+	--card-background-color: #d4c9be;
+	--button-background-color: #123458;
+}
+
+.header-light
+{
+	background-color: var(--background-color);
+	border-bottom: 2px solid var(--button-background-color);
+	box-shadow: 0 5px 5px var(--button-background-color);
+}
+
+.header-light a
+{
+	color: var(--foreground-color);
+}
+
+.main-light
+{
+	background-color: var(--background-color);
+	color: var(--foreground-color);
+}
+
+.card-light
+{
+	background-color: var(--card-background-color);
+	border: 2px solid var(--card-background-color);
+	box-shadow: 0 5px 5px var(--card-background-color);
+	padding: 10px;
+	border-radius: 25px;
+	width: 250px;
+	text-align: center;
+}
+
+.button-light
+{
+	background-color: var(--button-background-color);
+	color: var(--background-color);
+	border: none;
+	border-radius: 15px;
+	padding: 8px;
+}
+
+.footer-light
+{
+	background-color: var(--button-background-color);
+	color: var(--background-color);
+}

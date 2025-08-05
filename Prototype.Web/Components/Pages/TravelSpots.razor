@@ -1,0 +1,35 @@
+﻿@inject NavigationManager Navigation
+
+<h2>Popular Travel Adventures</h2>
+
+<div class="main-contents">
+    @foreach(var travelAdventure in travelAdventures)
+    {
+        <div class=@CardTheme.CardClass>
+            <svg height="150" width="150">
+                <image href="./images/[@travelAdventure.Title].svg" height="150" width="150"></image>
+            </svg>
+            <p>@travelAdventure.Description</p>
+            <button class=@CardTheme.ButtonClass @onclick="Explore">Explore ></button>
+        </div>
+    }
+</div>
+
+@code
+{
+    [CascadingParameter]
+    Theme CardTheme { get; set; }
+
+    List<Travel> travelAdventures = new List<Travel>()
+    {
+        new Travel{ Id = 1, Title = "SeaDiving", Description = "Check out the sea adventures like Sea Diving, Snorkeling etc"},
+        new Travel{ Id = 2, Title = "Tent", Description = "End your mountain hike with a good tent stay!"},
+        new Travel{ Id = 3, Title = "HotAirBalloon", Description = "Explore the sky adventures now!"},
+        new Travel{ Id = 4, Title = "Food", Description = "Enjoy the scrumptious food from various place!"}
+    };
+
+    private void Explore()
+    {
+        Navigation.NavigateTo("/article");
+    }
+}

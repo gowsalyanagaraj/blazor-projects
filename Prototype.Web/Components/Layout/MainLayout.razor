@@ -1,3 +1,50 @@
 ﻿@inherits LayoutComponentBase
+@using Prototype.Web.Components.Pages
 
-@Body
+<CascadingValue Value="@themeSelector">
+    <Header OnThemeValueChanged="@ChangeThemeValue" />
+    <main class=@themeSelector.MainClass>
+        @Body
+    </main>
+    <Footer/>
+</CascadingValue>
+
+@code
+{
+    Theme themeSelector;
+
+    protected override void OnInitialized()
+    {
+        themeSelector = new Theme()
+        {
+            Themes = Themes.LightTheme,
+            HeaderClass = "header-light",
+            FooterClass = "footer-light",
+            MainClass = "main-light",
+            CardClass = "card-light",
+            ButtonClass = "button-light"
+        };
+    }
+
+    private void ChangeThemeValue(Themes theme)
+    {
+        if(theme.Equals(Themes.LightTheme))
+        {
+            themeSelector.Themes = Themes.DarkTheme;
+            themeSelector.HeaderClass = "header-dark";
+            themeSelector.FooterClass = "footer-dark";
+            themeSelector.MainClass = "main-dark";
+            themeSelector.CardClass = "card-dark";
+            themeSelector.ButtonClass = "button-dark";
+        }
+        else
+        {
+            themeSelector.Themes = Themes.LightTheme;
+            themeSelector.HeaderClass = "header-light";
+            themeSelector.FooterClass = "footer-light";
+            themeSelector.MainClass = "main-light";
+            themeSelector.CardClass = "card-light";
+            themeSelector.ButtonClass = "button-light";
+        }
+    }
+}

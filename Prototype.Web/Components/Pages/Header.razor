@@ -1,0 +1,20 @@
+﻿<header class=@HeaderTheme.HeaderClass>
+    <h1><a href="/">Travellor</a></h1>
+    <svg @onclick="@ChangeTheme" height="40" width="40">
+        <image href="./images/[@HeaderTheme.Themes].svg" height="40" width="40"></image>
+    </svg>
+</header>
+
+@code
+{
+    [CascadingParameter]
+    Theme HeaderTheme { get; set; }
+
+    [Parameter]
+    public EventCallback<Themes> OnThemeValueChanged { get; set; }
+
+    private void ChangeTheme()
+    {
+        OnThemeValueChanged.InvokeAsync(HeaderTheme.Themes);
+    }
+}
