@@ -1,3 +1,66 @@
 ﻿@page "/"
+@inject NavigationManager Navigation
 
-<h1>Pikachu!</h1>
+<h2>Anniversary Special!! Flat 20% off in all your favourites!!</h2>
+
+<h3>Home-made Popsicles</h3>
+
+<CardGrid Items="popsicles" Context="iceCream">
+    <CardTemplate>
+        <div class="card">
+            <svg height="150" width="150">
+                <image href="./images/[@iceCream.Name].svg" height="150" width="150"></image>
+            </svg>
+            <h4>@iceCream.Name</h4>
+            <p>$ @iceCream.Price</p>
+            <h4>$ @Math.Round(iceCream.Price*80/100, 2, MidpointRounding.AwayFromZero)</h4>
+            <button class="button" @onclick="Taste">Taste it!</button>
+        </div>
+    </CardTemplate>
+</CardGrid>
+
+<h3>Our Special Scoops</h3>
+
+<CardGrid Items="scoops" Context="iceCream">
+    <CardTemplate>
+        <div class="card">
+            <svg height="150" width="150">
+                <image href="./images/[@iceCream.Name].svg" height="150" width="150"></image>
+            </svg>
+            <h4>@iceCream.Name</h4>
+            <p>$ @iceCream.Price</p>
+            <h4>$ @Math.Round(iceCream.Price * 80 / 100, 2, MidpointRounding.AwayFromZero)</h4>
+            <button class="button" @onclick="Taste">Taste it!</button>
+        </div>
+    </CardTemplate>
+</CardGrid>
+
+@code
+{
+    List<IceCream> popsicles = new List<IceCream>()
+    {
+        new IceCream{ Name = "Blueberry", Price = 49.99 },
+        new IceCream{ Name = "Chocolate", Price = 29.99 },
+        new IceCream{ Name = "Mango", Price = 39.99 },
+        new IceCream{ Name = "Raspberry", Price = 59.99 },
+        new IceCream{ Name = "MixedFruits", Price = 59.99 }
+    };
+
+    List<IceCream> scoops = new List<IceCream>()
+    {
+        new IceCream{ Name = "ConeSingleScoop", Price = 30 },
+        new IceCream{ Name = "ConeDoubleScoop", Price = 65 },
+        new IceCream{ Name = "CustomScoops", Price = 150 }
+    };
+
+    public class IceCream
+    {
+        public string Name { get; set; }
+        public double Price { get; set; }
+    }
+
+    private void Taste()
+    {
+        Navigation.NavigateTo("/taste");
+    }
+}

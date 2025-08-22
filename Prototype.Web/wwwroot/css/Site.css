@@ -1,0 +1,115 @@
+﻿:root
+{
+	--background-color: #C8AAAA;
+	--foreground-color: #FFDAB3;
+	--card-color: #9F8383;
+	--button-color: #574964;
+}
+
+*
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body
+{
+	font-family: 'Kristen ITC';
+	background-color: var(--background-color);
+}
+
+.header
+{
+	height: 10vh;
+	gap: 10px;
+}
+
+.header a
+{
+	text-decoration: none;
+	color: var(--foreground-color);
+}
+
+.main
+{
+	height: auto;
+	gap: 40px;
+	padding-bottom: 20px;
+}
+
+.main-contents
+{
+	flex-wrap: wrap;
+	gap: 30px;
+}
+
+.sub-contents
+{
+	gap: 30px;
+	height: 85vh;
+	text-align: center;
+}
+
+.card
+{
+	background-color: var(--card-color);
+	padding: 30px;
+	border: none;
+	border-radius: 25px;
+	box-shadow: 0px 5px 5px var(--foreground-color);
+}
+
+.card p
+{
+	text-decoration: line-through;
+}
+
+h2
+{
+	background-color: var(--foreground-color);
+	padding: 10px;
+	width: 100%;
+	text-align: center;
+}
+
+.button
+{
+	background-color: var(--button-color);
+	color: var(--foreground-color);
+	padding: 10px;
+	border: none;
+	border-radius: 10px;
+}
+
+.footer
+{
+	height: 5vh;
+}
+
+.header, .footer
+{
+	background-color: var(--button-color);
+	color: var(--foreground-color);
+}
+
+.header, .footer, .main, .main-contents, .card, .sub-contents
+{
+	display: flex;
+}
+
+.main, .card, .sub-contents
+{
+	flex-direction: column;
+}
+
+.main-contents
+{
+	flex-direction: row;
+}
+
+.header, .footer, .main, .main-contents, .card, .sub-contents
+{
+	justify-content: center;
+	align-items:center;
+}

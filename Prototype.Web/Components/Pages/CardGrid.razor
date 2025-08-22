@@ -1,0 +1,17 @@
+﻿@typeparam TItem
+
+<div class="main-contents">
+    @foreach(var item in Items)
+    {
+        @CardTemplate(item)
+    }
+</div>
+
+@code 
+{
+    [Parameter]
+    public RenderFragment<TItem> CardTemplate { get; set; }
+
+    [Parameter]
+    public IReadOnlyList<TItem> Items { get; set; }
+}
